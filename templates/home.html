@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100 p-t-50 p-b-90">
+				
+				<p>
+					{% with messages = get_flashed_messages() %}
+					  {% if messages %}
+						<ul class=flashes>
+						{% for message in messages %}
+						  <li>{{ message }}</li>
+						{% endfor %}
+						</ul>
+					  {% endif %}
+					{% endwith %}
+				</p>
+				<form method="post" action="/upload" enctype="multipart/form-data">
+					<dl>
+						<p>
+							<input type="file" name="file" autocomplete="off" required>
+						</p>
+					</dl>
+					<p>
+						<input type="submit" value="Submit">
+					</p>
+				</form>
+				<hr>
+        			{% with messages = get_flashed_messages() %}
+        			{% if messages %}
+        		<ul>
+            		{% for message in messages %}
+            		<li>{{ message }}</li>
+            		{% endfor %}
+        		</ul>
+					{% endif %}
+        			{% endwith %}
+				<br>
+				<br>
+				<div class="click-image">
+					<label class="form-label" for="customFile">Choose your image</label>
+					<input type="file" class="form-control" id="customFile" />
+				</div>
+				<div class="container-login100-form-btn m-t-17">
+					<button class="login100-form-btn">
+						<a class="login100-form-btn" href="/logout">Logout</a>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
